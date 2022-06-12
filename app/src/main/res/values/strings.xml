@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MyPracticeMVP</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home">首页</string>
+    <string name="square">广场</string>
+    <string name="official">公众号</string>
+    <string name="system">体系</string>
+    <string name="project">项目</string>
+
+    <string-array name="tab">
+        <item>HomeFragment</item>
+        <item>SquareFragment</item>
+        <item>OfficialAccountsFragment</item>
+        <item>SystemFragment</item>
+        <item>ProjectFragment</item>
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navigation1"
+        android:title="@string/home"
+        android:enabled="true"
+        android:icon="@drawable/equipmentcenter_selector"
+        />
+    <item
+        android:id="@+id/navigation2"
+        android:title="@string/square"
+        android:icon="@drawable/equipmentcenter_selector"
+         />
+    <item
+        android:id="@+id/navigation3"
+        android:title="@string/official"
+        android:enabled="true"
+        android:icon="@drawable/equipmentcenter_selector"
+        />
+    <item
+        android:id="@+id/navigation4"
+        android:title="@string/system"
+        android:enabled="true"
+        android:icon="@drawable/equipmentcenter_selector"
+        />
+    <item
+        android:id="@+id/navigation5"
+        android:title="@string/project"
+        android:enabled="true"
+        android:icon="@drawable/equipmentcenter_selector"
+        />
+</menu>
