@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.HomeFragment">
 
-    <com.youth.banner.Banner
-        android:id="@+id/home_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+  <com.zhang.mypracticemvp.view.custom.MainToolBar
+      android:id="@+id/fh_toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="45dp" />
 
 
 

@@ -66,6 +66,7 @@ public class HomeFragment extends BaseFragment<IHomeBanner.Presenter> implements
 
     @Override
     public void initView() {
+
         imgList = new ArrayList<>();
     }
 

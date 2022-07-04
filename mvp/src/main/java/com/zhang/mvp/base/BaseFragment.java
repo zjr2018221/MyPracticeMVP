@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.gyf.immersionbar.ImmersionBar;
+import com.zhang.mvp.R;
 import com.zhang.mvp.interfaces.IBasePersenter;
 import com.zhang.mvp.interfaces.IBaseView;
 import com.zhang.mvp.utils.NetUtil;
@@ -41,19 +43,19 @@ public abstract class BaseFragment<P extends IBasePersenter> extends Fragment im
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getActivity().getWindow().getDecorView();
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(option);
-            getActivity().getWindow().setNavigationBarColor(Color.TRANSPARENT);
-            getActivity().getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            View decorView = getActivity().getWindow().getDecorView();
+//            int option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+//            decorView.setSystemUiVisibility(option);
+//            getActivity().getWindow().setNavigationBarColor(Color.TRANSPARENT);
+//            getActivity().getWindow().setStatusBarColor(Color.TRANSPARENT);
+//        }
+//        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
+//            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
         mContext = getContext();
         unbinder = ButterKnife.bind(this,view);
         persenter = createPresenter();

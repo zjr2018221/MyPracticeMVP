@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '30.0.0'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.0'
 
     defaultConfig {
         applicationId "com.zhang.mypracticemvp"
         minSdkVersion 16
-        targetSdkVersion 32
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -48,6 +48,9 @@ dependencies {
 
     // Banner轮播图
     implementation 'com.youth.banner:banner:1.4.9'
+
+    // 沉浸式状态栏
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
 
 
 

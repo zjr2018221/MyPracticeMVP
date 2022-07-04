@@ -61,7 +61,7 @@ public class HttpManager {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
-                .addInterceptor(new LoggingInterceptor())
+                .addInterceptor(new LoggingInterceptor()) //TODO:在打生产包的时候需要注视掉
                 .addInterceptor(new HeaderInterceptor())
                 .build();
         return okHttpClient;

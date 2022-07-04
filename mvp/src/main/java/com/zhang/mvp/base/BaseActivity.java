@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.gyf.immersionbar.ImmersionBar;
+import com.zhang.mvp.R;
 import com.zhang.mvp.interfaces.IBasePersenter;
 import com.zhang.mvp.interfaces.IBaseView;
 import com.zhang.mvp.utils.NetUtil;
@@ -30,6 +32,8 @@ public abstract class BaseActivity<P extends IBasePersenter> extends AppCompatAc
     protected P presenter;
     protected Unbinder unbinder; //butterknife
     private int netMobile;
+    protected boolean isImmersionBarEnabled = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,23 +41,24 @@ public abstract class BaseActivity<P extends IBasePersenter> extends AppCompatAc
         //需要界面view
         setContentView(getLayout());
         unbinder = ButterKnife.bind(this);
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(option);
-            getWindow().setNavigationBarColor(Color.WHITE);
-            getWindow().setStatusBarColor(Color.WHITE);
-        }
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            View decorView = getWindow().getDecorView();
+//            int option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+//            decorView.setSystemUiVisibility(option);
+//            getWindow().setNavigationBarColor(Color.WHITE);
+//            getWindow().setStatusBarColor(Color.WHITE);
+//        }
+//        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
             //初始化界面
 
         inspectNet();
         initView();
+        initStatusBar();
         presenter = createPersenter();
         if(presenter != null){
             presenter.attachView(this);
@@ -70,6 +75,23 @@ public abstract class BaseActivity<P extends IBasePersenter> extends AppCompatAc
         this.netMobile = NetUtil.getNetWorkState(this);
         return isNetConnect();
 
+    }
+
+    /**
+     * 初始化沉浸式状态栏
+     */
+    protected void initStatusBar() {
+        if (isImmersionBarEnabled) {
+            initImmersionBar();
+        }
+    }
+
+    protected void initImmersionBar() {
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.white)
+                .statusBarDarkFont(true)
+                .fitsSystemWindows(true)
+                .init();
     }
 
     /**

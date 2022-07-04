@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.gyf.immersionbar.ImmersionBar;
 import com.zhang.mypracticemvp.R;
 import com.zhang.mypracticemvp.view.fragment.HomeFragment;
 import com.zhang.mypracticemvp.view.fragment.OfficialAccountsFragment;
@@ -25,6 +26,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 /**
  * 创建日期：6/8/22 3:20 PM
@@ -54,7 +56,7 @@ public class HomeActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-
+        initImmersionBar();
         fragmentList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.tab)));
         fragmentManager = getSupportFragmentManager();
         showFragment(HOME);
@@ -129,5 +131,12 @@ public class HomeActivity extends FragmentActivity {
             }
         });
 
+    }
+    private void initImmersionBar() {
+        ImmersionBar.with(this)
+                .statusBarColor(com.zhang.mvp.R.color.white)
+                .statusBarDarkFont(true)
+                .fitsSystemWindows(true)
+                .init();
     }
 }

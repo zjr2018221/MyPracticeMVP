@@ -1,6 +1,5 @@
 package com.zhang.mvp.net;
 
-import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
