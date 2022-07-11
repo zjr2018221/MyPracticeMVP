@@ -37,11 +37,11 @@ public class MainToolBar extends Toolbar {
     private Context mContext;
 
     public MainToolBar(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public MainToolBar(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public MainToolBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -51,11 +51,12 @@ public class MainToolBar extends Toolbar {
     }
 
     private void initView() {
+//        LayoutInflater.from(mContext).inflate( R.layout.main_toolbar, this);
         View.inflate(mContext, R.layout.main_toolbar, this);
         ButterKnife.bind(this);
     }
 
-    public void changeTitleText(String msg){ // 更改标题文本
+    public void changeTitleText(String msg) { // 更改标题文本
         mtbText.setText(msg);
     }
 

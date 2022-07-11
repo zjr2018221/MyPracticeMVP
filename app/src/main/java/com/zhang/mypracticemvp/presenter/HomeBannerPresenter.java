@@ -1,11 +1,10 @@
 package com.zhang.mypracticemvp.presenter;
 
-import android.util.Log;
 import android.widget.Toast;
 
 import com.zhang.mvp.base.BasePersenter;
-import com.zhang.mvp.interfaces.Callback;
 import com.zhang.mvp.databean.HomeBannerBean;
+import com.zhang.mvp.interfaces.Callback;
 import com.zhang.mypracticemvp.contract.IHomeBanner;
 import com.zhang.mypracticemvp.model.HomeBannerMolder;
 
@@ -16,10 +15,10 @@ import com.zhang.mypracticemvp.model.HomeBannerMolder;
  * 包名： com.zhang.mypracticemvp.presenter
  * 类说明：
  */
-public class HomeBannerPresenter extends BasePersenter<IHomeBanner.View> implements IHomeBanner.Presenter{
+public class HomeBannerPresenter extends BasePersenter<IHomeBanner.View> implements IHomeBanner.Presenter {
     IHomeBanner.Model model;
 
-    public HomeBannerPresenter(){
+    public HomeBannerPresenter() {
         this.model = new HomeBannerMolder();
     }
 
@@ -33,7 +32,7 @@ public class HomeBannerPresenter extends BasePersenter<IHomeBanner.View> impleme
 
             @Override
             public void success(HomeBannerBean bean) {
-                if(mView != null){
+                if (mView != null) {
                     mView.homeBannerView(bean);
                 }
             }

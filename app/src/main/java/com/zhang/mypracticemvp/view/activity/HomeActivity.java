@@ -58,8 +58,8 @@ public class HomeActivity extends FragmentActivity {
         ButterKnife.bind(this);
         initImmersionBar();
         fragmentList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.tab)));
-        fragmentManager = getSupportFragmentManager();
-        showFragment(HOME);
+        fragmentManager = getSupportFragmentManager(); // 获取fragment管理器
+        showFragment(HOME); // 首次加载首页
         initViewPager();
     }
 
@@ -88,8 +88,6 @@ public class HomeActivity extends FragmentActivity {
 
     private Fragment instantFragment(int index) {
         switch (index){
-            case HOME:
-                return HomeFragment.newInstance("","");
             case SQUARE:
                 return SquareFragment.newInstance("","");
             case OFFICIAL:
@@ -98,13 +96,14 @@ public class HomeActivity extends FragmentActivity {
                 return SystemFragment.newInstance("","");
             case PROJECT:
                 return ProjectFragment.newInstance("","");
+            case HOME:
             default:
                 return HomeFragment.newInstance("","");
         }
     }
 
 
-    private void initViewPager() {
+    private void initViewPager() { //
         bottomNavigagionView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -132,7 +131,8 @@ public class HomeActivity extends FragmentActivity {
         });
 
     }
-    private void initImmersionBar() {
+
+    private void initImmersionBar() { // 控制状态栏 ImmersionBar
         ImmersionBar.with(this)
                 .statusBarColor(com.zhang.mvp.R.color.white)
                 .statusBarDarkFont(true)

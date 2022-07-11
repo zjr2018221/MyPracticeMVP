@@ -1,6 +1,5 @@
 package com.zhang.mypracticemvp.model;
 
-import com.zhang.mvp.api.ServiceApi;
 import com.zhang.mvp.base.BaseModel;
 import com.zhang.mvp.constant.NetType;
 import com.zhang.mvp.databean.HomeBannerBean;
@@ -9,8 +8,6 @@ import com.zhang.mvp.net.CommonSubscriber;
 import com.zhang.mvp.net.HttpManager;
 import com.zhang.mvp.utils.RxUtils;
 import com.zhang.mypracticemvp.contract.IHomeBanner;
-
-import io.reactivex.Flowable;
 
 
 /**

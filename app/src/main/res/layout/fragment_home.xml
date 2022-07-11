@@ -3,13 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragment.HomeFragment">
 
   <com.zhang.mypracticemvp.view.custom.MainToolBar
       android:id="@+id/fh_toolbar"
+      app:contentInsetEnd="0dp"
+      app:contentInsetLeft="0dp"
+      app:contentInsetRight="0dp"
+      app:contentInsetStart="0dp"
       android:layout_width="match_parent"
       android:layout_height="45dp" />
 
+  <com.youth.banner.Banner
+      android:id="@+id/fh_banner"
+      android:layout_below="@+id/fh_toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="200dp" />
+
+<!--  xmlns:app="http://schemas.android.com/apk/res-auto"-->
 
 
 </RelativeLayout>
