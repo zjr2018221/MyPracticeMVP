@@ -29,10 +29,14 @@ public class MainToolBar extends Toolbar {
     RelativeLayout mtbRelative;
     @BindView(R.id.mtb_side)
     ImageView mtbSide;
+    @BindView(R.id.mtb_goback)
+    ImageView mtbGoBack;
     @BindView(R.id.mtb_text)
     TextView mtbText;
     @BindView(R.id.mtb_search)
     ImageView mtbSearch;
+    @BindView(R.id.mtb_menu)
+    ImageView mtbMenu;
 
     private Context mContext;
 
@@ -60,16 +64,88 @@ public class MainToolBar extends Toolbar {
         mtbText.setText(msg);
     }
 
+    public void  fatherPage(boolean isShow){ // 主页
+        if(isShow){
+            mtbSide.setVisibility(View.VISIBLE);
+            mtbSearch.setVisibility(View.VISIBLE);
+        }else {
+            mtbGoBack.setVisibility(View.INVISIBLE);
+            mtbMenu.setVisibility(View.INVISIBLE);
+        }
+    }
 
-    @OnClick({R.id.mtb_side, R.id.mtb_search})
+    public void sonPage(boolean isShow){ // 子页
+        if(isShow){
+            mtbGoBack.setVisibility(View.VISIBLE);
+            mtbMenu.setVisibility(View.VISIBLE);
+        }else {
+            mtbSide.setVisibility(View.INVISIBLE);
+            mtbSearch.setVisibility(View.INVISIBLE);
+        }
+    }
+
+
+    @OnClick({R.id.mtb_side,R.id.mtb_side,R.id.mtb_search,R.id.mtb_menu,})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.mtb_side: // 点击侧滑菜单
-
+            case R.id.mtb_side:   // 点击侧滑菜单
+                if(onTBClickListener != null){
+                    onTBClickListener.onSideClickListener();
+                }
+                break;
+            case R.id.mtb_goback: // 点击退出返回
+                if(onTBClickListener != null){
+                    onTBClickListener.onGoBackClickListener();
+                }
                 break;
             case R.id.mtb_search: // 点击搜索
-
+                if(onTBClickListener != null){
+                    onTBClickListener.onSearchClickListener();
+                }
+                break;
+            case R.id.mtb_menu:   // 点击菜单
+                if(onTBClickListener != null){
+                    onTBClickListener.onMenuClickListener();
+                }
                 break;
         }
     }
+
+    public interface OnTBClickListener{ // 点击事件接口回调
+        void onSideClickListener();
+
+        void onGoBackClickListener();
+
+        void onSearchClickListener();
+
+        void onMenuClickListener();
+    }
+
+    private OnTBClickListener onTBClickListener;
+
+    public void setOnTBClickListener(OnTBClickListener onClick){
+        this.onTBClickListener = onClick;
+    }
+
+    public abstract static class TBClickListener implements OnTBClickListener{ // 写一个抽象类，防止每个接口方法都显示
+        @Override
+        public void onGoBackClickListener() {
+        }
+
+        @Override
+        public void onMenuClickListener() {
+
+        }
+
+        @Override
+        public void onSearchClickListener() {
+
+        }
+
+        @Override
+        public void onSideClickListener() {
+
+        }
+    }
+
 }

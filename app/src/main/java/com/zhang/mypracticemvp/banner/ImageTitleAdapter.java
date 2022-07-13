@@ -44,6 +44,13 @@ public class ImageTitleAdapter extends BannerAdapter<HomeBannerBean.DataBean, Re
                 .load(data.getImagePath())
 //                .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
                 .into(viewHolder.bannerImage);
+
+        viewHolder.bannerImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickListener.onClick(position);
+            }
+        });
     }
 
     public class BannerViewHolder extends RecyclerView.ViewHolder{
@@ -54,5 +61,15 @@ public class ImageTitleAdapter extends BannerAdapter<HomeBannerBean.DataBean, Re
             bannerImage = itemView.findViewById(R.id.bannerImage);
             bannerText = itemView.findViewById(R.id.bannerTitle);
         }
+    }
+
+    public interface OnClickListener{
+        void onClick(int position);
+    }
+
+    private OnClickListener onClickListener;
+
+    public void setOnClickListener(OnClickListener listener){
+        this.onClickListener = listener;
     }
 }

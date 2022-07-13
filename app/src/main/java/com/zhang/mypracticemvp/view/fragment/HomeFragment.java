@@ -104,33 +104,22 @@ public class HomeFragment extends BaseFragment<IHomeBanner.Presenter> implements
 
     @Override
     public void homeBannerView(HomeBannerBean homeBannerBean) {
-        Log.i("homeBannerView", "homeBannerView: " + homeBannerBean.getData().get(1).getTitle());
-        List<HomeBannerBean.DataBean> data = homeBannerBean.getData();
-        imgList.clear();
-        imgList.addAll(data);
         setBanner(homeBannerBean);
     }
 
-    private void setBanner(HomeBannerBean homeBannerBean){
-//        fhBanner.setAdapter(new BannerImageAdapter<HomeBannerBean.DataBean>(homeBannerBean.getData()) {
-//            @Override
-//            public void onBindView(BannerImageHolder holder, HomeBannerBean.DataBean data, int position, int size) {
-//
-//
-//                //图片加载自己实现
-//                Glide.with(holder.itemView)
-//                        .load(data.getImagePath())
-//                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
-//                        .into(holder.imageView);
-//            }
-//        })
-//                .addBannerLifecycleObserver(this)//添加生命周期观察者
-//                .setIndicator(new CircleIndicator(mContext));
-        fhBanner.setAdapter(new ImageTitleAdapter(homeBannerBean.getData(),mContext));
+    private void setBanner(HomeBannerBean homeBannerBean){ // 设置自定义banner
+        ImageTitleAdapter adapter = new ImageTitleAdapter(homeBannerBean.getData(), mContext);
+        fhBanner.setAdapter(adapter);
         fhBanner.setIndicator(new CircleIndicator(mContext));
         fhBanner.setIndicatorGravity(IndicatorConfig.Direction.RIGHT);
         fhBanner.setIndicatorMargins(new IndicatorConfig.Margins(0, 0,
                 BannerConfig.INDICATOR_MARGIN, BannerUtils.dp2px(12)));
-    }
 
+        adapter.setOnClickListener(new ImageTitleAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+    }
 }

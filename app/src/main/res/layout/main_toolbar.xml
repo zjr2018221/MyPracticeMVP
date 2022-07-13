@@ -7,11 +7,21 @@
 
     <ImageView
         android:id="@+id/mtb_side"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
-        android:background="@mipmap/ic_launcher" />
+        android:background="@mipmap/apps"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/mtb_goback"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:background="@mipmap/fanhui"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/mtb_text"
@@ -19,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/mtb_side"
         android:text="哈哈"
-        android:textSize="25sp"
+        android:textSize="17sp"
         android:textColor="@color/white"
         android:layout_centerVertical="true"
         android:textStyle="bold"
@@ -27,11 +37,22 @@
 
     <ImageView
         android:id="@+id/mtb_search"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@mipmap/ic_launcher_round"
-        android:layout_marginRight="15dp"/>
+        android:background="@mipmap/sousuo"
+        android:layout_marginRight="15dp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/mtb_menu"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@mipmap/caidan"
+        android:layout_marginRight="15dp"
+        android:visibility="gone"/>
 
 </RelativeLayout>
